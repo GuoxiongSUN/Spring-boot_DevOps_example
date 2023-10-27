@@ -2,6 +2,14 @@ pipeline {
         agent any
 
     stages {
+        
+        stage('Prepare'){
+            steps {
+                
+                sh 'kubectl get service'
+                
+            }
+        }
 
         stage('Build'){
             steps {
