@@ -11,8 +11,14 @@ pipeline {
             }
         }
 
+        stage('Docker Login') {
+            steps {
+                    withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+                    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"                }
+            }
+        }
+
         stage('Docker Build') {
-            agent any
                 steps {
                     sh 'docker build -t sylvainsun/spring-boot-example:latest .'
                 }
@@ -20,10 +26,9 @@ pipeline {
         
         stage('Docker Push') {
             steps {
-            withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-            sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+            
             sh 'docker push sylvainsun/spring-boot-example:latest'
-               }
+               
             }
         }
 
