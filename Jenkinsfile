@@ -34,13 +34,12 @@ pipeline {
 
         stage('Deployment'){
             steps {
-                script {
-                            
-                    sh 'kubectl apply -f deploy/deployment-users.yaml'
-                    sh 'kubectl apply -f deploy/service-users.yaml'
+                                
+                    sh 'kubectl apply -f ./deploy/deployment-users.yaml'
+                    sh 'kubectl apply -f ./deploy/service-users.yaml'
 
-                }
-            }
+             }
+            
         }
 
     }   
