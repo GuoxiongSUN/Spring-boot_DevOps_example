@@ -1,6 +1,10 @@
 pipeline {
         agent any
 
+    environment {
+        KUBECONFIG = '/home/sun/.kube/config'
+    }    
+
     stages {
         
         stage('Prepare'){
