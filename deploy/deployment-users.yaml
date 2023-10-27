@@ -14,14 +14,14 @@ spec:
     spec:
       containers:
         - name: users-app
-          image: users:latest # Replace this with your actual Docker image name
+          image: sylvainsun/spring-boot-example:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8888
           env:
             - name: env_url
-              value: url=jdbc:sqlserver://sun-users-azure.postgres.database.azure.com:5432;database=postgres;              
+              value: jdbc:postgresql://10.106.39.195:5432/daxiong_first_database;
             - name: SPRING_DATASOURCE_USERNAME
-              value: "daxiong@sun-users-azure"
+              value: daxiong
             - name: SPRING_DATASOURCE_PASSWORD
-              value: "Aa123456"
+              value: Aa123456
